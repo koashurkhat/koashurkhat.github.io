@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koshur Khat</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #626F47;
+            padding: 20px;
+            text-align: center;
+            color: #FFCF50;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 50px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+        nav a {
+            color: #FFCF50;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 15px;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+        }
+        nav a:hover {
+            background: #FFCF50;
+            color: #626F47;
+        }
+        .section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 50px;
+            text-align: center;
+            color: white;
+        }
+        #about { background: #A4B465; }
+        #importance { background: #626F47; }
+        #videos { background: #FFCF50; color: #626F47; }
+        #contact { background: #FEFAE0; color: #1B5E20; }
+        h1 {
+            font-size: 48px;
+            font-weight: bold;
+            color: #FFCF50;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        h2 {
+            font-size: 36px;
+            color: #626F47;
+        }
+        iframe {
+            border-radius: 8px;
+            width: 80%;
+            max-width: 700px;
+            height: 400px;
+            border: none;
+        }
+        footer {
+            background: #626F47;
+            padding: 20px;
+            text-align: center;
+            color: #FFCF50;
+        }
+        @media (max-width: 768px) {
+            .section {
+                padding: 80px 20px;
+            }
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            iframe {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Koshur Khat</div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#importance">Importance</a>
+            <a href="#videos">Videos</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    
+    <div id="about" class="section">
+        <h1>Welcome to Koshur Khat</h1>
+        <h2>A New Way to Write Kashmiri</h2>
+        <p>Koshur Khat is a modernized Roman script for Kashmiri, created to improve accessibility and ease of learning. It provides a structured and simple method for writing Kashmiri without relying on traditional scripts, making it user-friendly for both native and non-native speakers.</p>
+    </div>
+    
+    <div id="importance" class="section">
+        <h2>Why Koshur Khat?</h2>
+        <p>The Kashmiri language has historically faced challenges due to the complexity of its scripts. Koshur Khat simplifies this by introducing a consistent Roman-based writing system, ensuring that future generations can easily read and write in their native tongue while also making it more accessible for digital communication.</p>
+    </div>
+    
+    <div id="videos" class="section">
+        <h2>Videos</h2>
+        <iframe src="https://www.youtube.com/embed/qXpAi0MAR_o" allowfullscreen></iframe>
+    </div>
+    
+    <div id="contact" class="section">
+        <h2>Contact</h2>
+        <p>For more details, inquiries, or collaborations, reach out at <a href="mailto:koashurkhat@gmail.com" style="color: #1B5E20;">koashurkhat@gmail.com</a></p>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Koshur Khat. All rights reserved.</p>
+    </footer>
+</body>
+</html>
