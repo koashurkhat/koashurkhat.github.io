@@ -9,10 +9,34 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #FFCF50;
+            transition: all 0.3s ease;
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
         }
         header {
             background: #626F47;
-            padding: 20px;
             text-align: center;
             color: #FFCF50;
             position: fixed;
@@ -22,7 +46,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 20px 50px;
+            padding: 15px 5%;
+            box-sizing: border-box;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
         .logo {
@@ -38,36 +63,58 @@
             text-decoration: none;
             font-size: 18px;
             padding: 10px 15px;
-            transition: all 0.3s ease;
-            border-radius: 5px;
+            position: relative;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #FFCF50;
+            transition: width 0.3s ease;
+        }
+        nav a:hover::after {
+            width: 100%;
         }
         nav a:hover {
-            background: #FFCF50;
-            color: #626F47;
+            color: #FFCF50;
         }
         .section {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 100px 50px;
+            padding: 80px 5%;
             text-align: center;
             color: white;
+            box-sizing: border-box;
         }
         #about { background: #A4B465; }
         #importance { background: #626F47; }
         #videos { background: #FFCF50; color: #626F47; }
         #contact { background: #FEFAE0; color: #1B5E20; }
         h1 {
-            font-size: 48px;
+            font-size: clamp(32px, 5vw, 48px);
             font-weight: bold;
             color: #FFCF50;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            margin: 0 0 20px;
         }
         h2 {
-            font-size: 36px;
+            font-size: clamp(24px, 4vw, 36px);
             color: #626F47;
+            margin: 0 0 15px;
+        }
+        p {
+            font-size: clamp(16px, 2vw, 18px);
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
         }
         iframe {
             border-radius: 8px;
@@ -83,15 +130,48 @@
             color: #FFCF50;
         }
         @media (max-width: 768px) {
-            .section {
-                padding: 80px 20px;
+            header {
+                flex-direction: row;
+                padding: 10px 5%;
+            }
+            .hamburger {
+                display: flex;
             }
             nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 100%;
+                background: #626F47;
                 flex-direction: column;
                 align-items: center;
+                justify-content: center;
+                transition: right 0.3s ease;
+                gap: 20px;
+            }
+            nav.active {
+                right: 0;
+            }
+            nav a {
+                font-size: 20px;
+                padding: 15px;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+            nav.active a {
+                opacity: 1;
+                transform: translateY(0);
+                transition-delay: 0.2s;
+            }
+            .section {
+                padding: 120px 5% 60px;
             }
             iframe {
-                height: 250px;
+                width: 100%;
+                height: 56.25vw;
+                max-height: 250px;
             }
         }
     </style>
@@ -99,6 +179,17 @@
 <body>
     <header>
         <div class="logo">Koshur Khat</div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#importance">Importance</a>
+            <a href="#videos">Videos</a>
+            <a href="#contact">Contact</a>
+        </nav>
     </header>
     
     <div id="about" class="section">
@@ -126,5 +217,30 @@
     <footer>
         <p>&copy; 2025 Koshur Khat. All rights reserved.</p>
     </footer>
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('nav');
+        const navLinks = document.querySelectorAll('nav a');
+
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
