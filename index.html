@@ -4,13 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Koshur Khat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        :root {
+            --primary: #4CAF50;
+            --secondary: #FFD700;
+            --light: #FFFFFF;
+            --dark: #1B5E20;
+            --main-gradient: linear-gradient(135deg, #4CAF50 0%, #FFD700 100%);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+        
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
             -webkit-tap-highlight-color: transparent;
+            background: linear-gradient(135deg, #2E7D32 0%, #FFC107 200%);
+            color: var(--light);
         }
+
         .hamburger {
             display: none;
             flex-direction: column;
@@ -19,26 +34,32 @@
             padding: 10px;
             z-index: 1001;
         }
+
         .hamburger span {
             display: block;
             width: 25px;
             height: 3px;
-            background: #FFCF50;
+            background: var(--light);
             transition: all 0.3s ease;
         }
+
         .hamburger.active span:nth-child(1) {
             transform: rotate(45deg) translate(7px, 7px);
         }
+
         .hamburger.active span:nth-child(2) {
             opacity: 0;
         }
+
         .hamburger.active span:nth-child(3) {
             transform: rotate(-45deg) translate(7px, -7px);
         }
+
         header {
-            background: #626F47;
-            text-align: center;
-            color: #FFCF50;
+            background: rgba(76, 175, 80, 0.15);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--light);
             position: fixed;
             width: 100%;
             top: 0;
@@ -48,137 +69,754 @@
             justify-content: space-between;
             padding: 15px 5%;
             box-sizing: border-box;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+            height: 70px;
         }
+
+        header.nav-hidden {
+            transform: translateY(-100%);
+        }
+
         .logo {
-            font-size: 28px;
-            font-weight: bold;
+            display: flex;
+            align-items: center;
         }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+
         nav {
             display: flex;
-            gap: 20px;
+            gap: 30px;
         }
+
         nav a {
-            color: #FFCF50;
+            color: var(--light);
             text-decoration: none;
             font-size: 18px;
-            padding: 10px 15px;
+            font-weight: 500;
+            padding: 10px 0;
             position: relative;
-            -webkit-tap-highlight-color: transparent;
-            user-select: none;
+            transition: all 0.3s ease;
         }
+
         nav a::after {
             content: '';
             position: absolute;
             width: 0;
             height: 2px;
             bottom: 0;
-            left: 0;
-            background-color: #FFCF50;
-            transition: width 0.3s ease;
+            left: 50%;
+            background-color: var(--light);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
         }
+
         nav a:hover::after {
             width: 100%;
         }
-        nav a:hover {
-            color: #FFCF50;
-        }
+
         .section {
-            min-height: 100vh;
+            min-height: auto;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 80px 5%;
+            padding: 40px 5%;
             text-align: center;
-            color: white;
-            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+            background: transparent;
+            color: var(--light);
         }
-        #about { background: #A4B465; }
-        #importance { background: #626F47; }
-        #videos { background: #FFCF50; color: #626F47; }
-        #contact { background: #FEFAE0; color: #1B5E20; }
-        h1 {
-            font-size: clamp(32px, 5vw, 48px);
-            font-weight: bold;
-            color: #FFCF50;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-            margin: 0 0 20px;
+
+        #about {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 50px;
+            padding-bottom: 0;
+            padding-left: 5%;
+            padding-right: 5%;
+            min-height: 100vh;
+            overflow: hidden;
         }
-        h2 {
-            font-size: clamp(24px, 4vw, 36px);
-            color: #626F47;
-            margin: 0 0 15px;
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: center;
+            padding: 0;
+            margin-top: 0; 
         }
-        p {
-            font-size: clamp(16px, 2vw, 18px);
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
+
+        .hero-titles {
+            text-align: left;
         }
-        iframe {
-            border-radius: 8px;
-            width: 80%;
-            max-width: 700px;
-            height: 400px;
-            border: none;
+
+        .hero-description {
+            position: relative;
+            background: rgba(76, 175, 80, 0.15);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transform: translateY(0);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        footer {
-            background: #626F47;
-            padding: 20px;
-            text-align: center;
-            color: #FFCF50;
+
+        .hero-description:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
         }
+
+        #about h1 {
+            font-size: clamp(40px, 5.5vw, 64px);
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        #about h2 {
+            font-size: clamp(20px, 2.5vw, 28px);
+            font-weight: 400;
+            margin: 20px 0 0;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+
+        #about p {
+            font-size: clamp(16px, 1.8vw, 18px);
+            line-height: 1.8;
+            margin: 0;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-background {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            opacity: 0.1;
+            overflow: hidden;
+        }
+
+        .hero-background::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle at center, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                        repeating-linear-gradient(45deg, rgba(76, 175, 80, 0.1) 0px, rgba(76, 175, 80, 0.1) 2px, transparent 2px, transparent 10px);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .floating-shapes {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .shape {
+            position: absolute;
+            background: rgba(255, 215, 0, 0.15);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        .shape:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 20%;
+            right: -100px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .shape:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            bottom: 10%;
+            left: -50px;
+            animation: float 15s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            25% {
+                transform: translate(-20px, 20px);
+            }
+            50% {
+                transform: translate(20px, -20px);
+            }
+            75% {
+                transform: translate(20px, 20px);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 80px 0 40px;
+                max-width: 800px;
+            }
+
+            .hero-titles {
+                text-align: center;
+            }
+
+            .hero-description {
+                text-align: center;
+                padding: 30px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+        }
+
         @media (max-width: 768px) {
             header {
-                flex-direction: row;
                 padding: 10px 5%;
+                background: rgba(76, 175, 80, 0.95);
+                height: 60px;
             }
+
+            #about {
+                padding-top: 40px; 
+                padding-bottom: 0;
+                padding-left: 20px;
+                padding-right: 20px;
+                min-height: 100vh;
+            }
+
+            .hero-content {
+                gap: 25px;
+            }
+
+            .section {
+                padding: 30px 20px;
+            }
+
+            #importance {
+                padding-top: 0; 
+            }
+
+            #videos, #contact {
+                padding: 30px 20px;
+            }
+
+            iframe {
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                height: 60px;
+            }
+
+            #about {
+                padding-top: 30px; 
+            }
+
+            .section {
+                padding: 20px 15px;
+            }
+
+            #importance {
+                padding-top: 0;
+            }
+
+            #videos, #contact {
+                padding: 20px 15px;
+            }
+
+            h2 {
+                margin: 0 0 20px;
+            }
+        }
+
+        #importance {
+            min-height: auto;
+            padding: 60px 5%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .importance-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .importance-text {
+            text-align: left;
+            padding-right: 40px;
+        }
+
+        .importance-text h2 {
+            font-size: clamp(32px, 4vw, 48px);
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .importance-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .importance-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 30px;
+            background: rgba(76, 175, 80, 0.15);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            margin: 0 0 10px;
+            color: var(--secondary);
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 1024px) {
+            .importance-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .importance-text {
+                text-align: center;
+                padding-right: 0;
+            }
+
+            .importance-text h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .importance-features {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .feature-card {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #importance {
+                padding: 40px 15px;
+            }
+
+            .importance-features {
+                padding: 15px;
+            }
+        }
+
+        h1 {
+            font-size: clamp(40px, 5vw, 56px);
+            font-weight: 700;
+            margin: 0 0 20px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            letter-spacing: -0.5px;
+        }
+
+        h2 {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 600;
+            margin: 0 0 30px;
+            letter-spacing: -0.5px;
+        }
+
+        p {
+            font-size: clamp(18px, 2vw, 20px);
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        iframe {
+            border-radius: 20px;
+            width: 80%;
+            max-width: 800px;
+            height: 450px;
+            border: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        footer {
+            background: rgba(76, 175, 80, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 20px;
+            text-align: center;
+            color: var(--light);
+            margin-top: 0;
+        }
+
+        #contact a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        #contact a:hover {
+            border-bottom-color: var(--light);
+        }
+
+        @media (max-width: 768px) {
             .hamburger {
                 display: flex;
             }
+
             nav {
                 position: fixed;
                 top: 0;
                 right: -100%;
                 height: 100vh;
                 width: 100%;
-                background: #626F47;
+                background: rgba(76, 175, 80, 0.95);
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
                 transition: right 0.3s ease;
-                gap: 20px;
+                gap: 30px;
+                border: none;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
             }
+
             nav.active {
                 right: 0;
             }
+
             nav a {
-                font-size: 20px;
+                font-size: 24px;
                 padding: 15px;
                 opacity: 0;
                 transform: translateY(20px);
-                transition: opacity 0.3s ease, transform 0.3s ease;
+                transition: all 0.3s ease;
             }
+
             nav.active a {
                 opacity: 1;
                 transform: translateY(0);
                 transition-delay: 0.2s;
             }
+
             .section {
                 padding: 120px 5% 60px;
             }
+
+            #about {
+                text-align: center;
+                align-items: center;
+            }
+
+            .hero-content {
+                padding-top: 0;
+            }
+
+            #about::before {
+                right: 50%;
+                top: 30%;
+                transform: translate(50%, -50%);
+                width: 300px;
+                height: 300px;
+            }
+
+            .hero-background {
+                width: 100%;
+                opacity: 0.05;
+            }
+
+            #about h1 {
+                font-size: clamp(36px, 5vw, 48px);
+            }
+
+            #about h2 {
+                font-size: clamp(20px, 2.5vw, 28px);
+                margin: 15px 0 20px;
+            }
+
+            #about p {
+                font-size: clamp(14px, 1.6vw, 18px);
+                line-height: 1.6;
+            }
+
             iframe {
                 width: 100%;
                 height: 56.25vw;
-                max-height: 250px;
+                max-height: 300px;
+            }
+
+            .hero-text-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .hero-description {
+                width: 100%;
+                padding: 20px;
+            }
+        }
+
+        #videos {
+            padding: 40px 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 30px;
+            overflow: hidden;
+        }
+
+        #videos h2 {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            padding-bottom: 39.375%;
+            height: 0;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            border: none;
+        }
+
+        @media (max-width: 768px) {
+            .video-container {
+                padding-bottom: 56.25%;
+                max-width: 100%;
+            }
+        }
+
+        #contact {
+            background: rgba(76, 175, 80, 0.15);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            margin: 40px auto;
+            max-width: 800px;
+            width: 90%;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            color: var(--light);
+            font-size: 24px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--secondary);
+            color: var(--dark);
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 768px) {
+            #videos {
+                padding: 20px 5%;
+                width: 90%;
+            }
+
+            .video-container {
+                width: 100%;
+            }
+
+            #contact {
+                padding: 30px 15px;
+                margin: 20px auto;
+            }
+
+            .social-links {
+                gap: 20px;
+            }
+
+            .social-link {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #videos {
+                padding: 15px 5%;
+            }
+
+            #contact {
+                padding: 20px 15px;
+            }
+
+            .social-link {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+        }
+
+        .footer-content {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .copyright {
+            font-size: 14px;
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            #contact {
+                margin: 20px auto;
+                padding: 30px 15px;
+            }
+
+            .footer-content {
+                margin-top: 30px;
+                padding-top: 15px;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="logo">Koshur Khat</div>
+        <div class="logo"><img src="kk-logo.png" alt="Koshur Khat Logo"></div>
         <div class="hamburger">
             <span></span>
             <span></span>
@@ -193,34 +831,94 @@
     </header>
     
     <div id="about" class="section">
-        <h1>Welcome to Koshur Khat</h1>
-        <h2>A New Way to Write Kashmiri</h2>
-        <p>Koshur Khat is a modernized Roman script for Kashmiri, created to improve accessibility and ease of learning. It provides a structured and simple method for writing Kashmiri without relying on traditional scripts, making it user-friendly for both native and non-native speakers.</p>
+        <div class="hero-content">
+            <div class="hero-titles">
+                <h1>Welcome to Koshur Khat</h1>
+                <h2>A New Way to Write Kashmiri</h2>
+            </div>
+            <div class="hero-description">
+                <p>Koshur Khat is a modernized Roman script for Kashmiri, created to improve accessibility and ease of learning. It provides a structured and simple method for writing Kashmiri without relying on traditional scripts, making it user-friendly for both native and non-native speakers.</p>
+            </div>
+        </div>
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <div class="hero-background"></div>
     </div>
     
     <div id="importance" class="section">
-        <h2>Why Koshur Khat?</h2>
-        <p>The Kashmiri language has historically faced challenges due to the complexity of its scripts. Koshur Khat simplifies this by introducing a consistent Roman-based writing system, ensuring that future generations can easily read and write in their native tongue while also making it more accessible for digital communication.</p>
+        <div class="importance-content">
+            <div class="importance-text">
+                <h2>Why Koshur Khat?</h2>
+                <p>The Kashmiri language has historically faced challenges due to the complexity of its scripts. Koshur Khat simplifies this by introducing a consistent Roman-based writing system, ensuring that future generations can easily read and write in their native tongue while also making it more accessible for digital communication.</p>
+            </div>
+            <div class="importance-features">
+                <div class="feature-card">
+                    <h3>Simplified Learning</h3>
+                    <p>Easy-to-learn Roman script that maintains the essence of Kashmiri pronunciation.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Digital Ready</h3>
+                    <p>Perfectly suited for modern digital communication and social media platforms.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Preserving Heritage</h3>
+                    <p>Making Kashmiri language more accessible while preserving its cultural richness.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Universal Access</h3>
+                    <p>Enabling both native and non-native speakers to read and write Kashmiri effortlessly.</p>
+                </div>
+            </div>
+        </div>
     </div>
     
     <div id="videos" class="section">
         <h2>Videos</h2>
-        <iframe src="https://www.youtube.com/embed/qXpAi0MAR_o?rel=0" allowfullscreen frameborder="0" allowfullscreen></iframe>
-
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/qXpAi0MAR_o?rel=0" allowfullscreen></iframe>
+        </div>
     </div>
     
     <div id="contact" class="section">
-        <h2>Contact</h2>
-        <p>For more details, inquiries, or collaborations, reach out at <a href="mailto:koashurkhat@gmail.com" style="color: #2B5E20;">koashurkhat@gmail.com</a></p>
+        <h2>Connect With Us</h2>
+        <p>Join us in our mission to make Kashmiri language more accessible to everyone.</p>
+        <div class="social-links">
+            <a href="mailto:koashurkhat@gmail.com" class="social-link" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.instagram.com/koashurkhat/" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@KoashurKhat" class="social-link" title="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+        <div class="footer-content">
+            <p class="copyright">&copy; 2025 Koshur Khat. All rights reserved.</p>
+        </div>
     </div>
-    
-    <footer>
-        <p>&copy; 2025 Koshur Khat. All rights reserved.</p>
-    </footer>
+
     <script>
         const hamburger = document.querySelector('.hamburger');
         const nav = document.querySelector('nav');
         const navLinks = document.querySelectorAll('nav a');
+        const header = document.querySelector('header');
+        let lastScroll = window.pageYOffset;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+           
+            if (currentScroll <= 50) {
+                header.classList.remove('nav-hidden');
+                return;
+            }
+            
+          
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                header.classList.add('nav-hidden');
+            } else {
+                header.classList.remove('nav-hidden');
+            }
+            
+            lastScroll = currentScroll;
+        });
 
         hamburger.addEventListener('click', (e) => {
             e.stopPropagation();
