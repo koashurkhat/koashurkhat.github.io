@@ -1,45 +1,44 @@
-# Koshur Khat Website Updates! 🎉
+# Koshur Khat Website
 
-Hey there! We've been working hard on making the Koshur Khat website look super cool and modern. Here's what we've done:
+Recent updates and improvements to the Koshur Khat website design and functionality.
 
-## New Stuff We Added 🚀
+## Recent Updates
 
-1. Made everything green and yellow! 
-   - Added some sweet gradients
-   - Made the navbar look fancy with glass effect
-   - Everything matches now and looks professional
+1. Theme and Design
+   - Implemented green and yellow gradient theme
+   - Added glassmorphic navbar with improved visibility
+   - Enhanced overall visual consistency
 
-2. Fixed the Hero Section
-   - Brought it up closer to the navbar (no more weird gaps!)
-   - Made it work better on phones
-   - Added some cool animations
+2. Hero Section Improvements
+   - Optimized spacing and alignment with navbar
+   - Enhanced mobile responsiveness
+   - Added subtle animations for better user experience
 
-3. Made "Why Koshur Khat?" Section Better
-   - Added nice cards with hover effects
-   - Better spacing and alignment
-   - More readable text
+3. "Why Koshur Khat?" Section
+   - Implemented card-based layout
+   - Added hover interactions
+   - Improved content readability
 
-4. Videos and Contact
-   - Centered the YouTube video perfectly
-   - Made video size just right for PC and mobile
-   - Added social media links with cool hover effects
-   - Combined footer with contact section (looks cleaner!)
+4. Media and Contact
+   - Optimized video player dimensions
+   - Improved social media integration
+   - Consolidated footer and contact sections
 
-## Social Links 🔗
-- Email us: koashurkhat@gmail.com
+## Contact Information
+- Email: koashurkhat@gmail.com
 - Instagram: @koashurkhat
 - YouTube: @KoashurKhat
 
-## Known Issues 🛠️
-- Sometimes the navbar might act weird on really old phones
-- Instagram embeds can be slow to load sometimes
+## Known Issues
+- Navbar responsiveness on legacy mobile devices
+- Instagram embed loading performance
 
-## Todo List 📝
-- Maybe add more videos later
-- Add a blog section?
-- Make the animations even smoother
+## Planned Improvements
+- Additional video content integration
+- Blog section implementation
+- Animation performance optimization
 
-Feel free to suggest more changes! We're always trying to make it better 😊
+For suggestions or improvements, please open an issue or submit a pull request.
 
 ---
-Made with ❤️ for preserving Kashmiri language 
+Dedicated to preserving the Kashmiri language 
