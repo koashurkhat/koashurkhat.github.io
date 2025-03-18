@@ -31,14 +31,6 @@ Recent updates and improvements to the Koshur Khat website design and functional
 
 ## Known Issues
 - Navbar responsiveness on legacy mobile devices
-- Instagram embed loading performance
 
-## Planned Improvements
-- Additional video content integration
-- Blog section implementation
-- Animation performance optimization
 
-For suggestions or improvements, please open an issue or submit a pull request.
 
----
-Dedicated to preserving the Kashmiri language 
