@@ -14,28 +14,7 @@ this is the website for koshur khat project. it helps people learn kashmiri lang
 - fixed spacing and text alignment throughout the site
 - made everything mobile friendly
 
-## how to use
 
-1. go to the main page
-2. click learn letters in the top menu or use the big button below main text
-3. on the letters page, click any example word to hear how it sounds
-4. for letter A, clicking plays a video
-5. use the moon/sun button at bottom right to switch dark/light mode
-
-## tech stuff used
-
-- HTML
-- CSS
-- JavaScript
-- Font Awesome icons
-- Poppins font
-- Phosphor icons
-
-## contact
-
-email: koashurkhat@gmail.com
-instagram: @koashurkhat
-youtube: @KoashurKhat
 
 ## Recent Updates
 
