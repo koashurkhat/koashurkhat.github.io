@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Koashur Khat Letters</title>
+  <style>
+    :root {
+      --primary: #F5D6A7;
+      --secondary: #FADADD;
+      --tertiary: #C5E1A5;
+      --quaternary: #FFE082;
+      --quinary: #B3E5FC;
+      --senary: #D1C4E9;
+      --septenary: #FFCCBC;
+      --octonary: #F8BBD0;
+      --nonary: #DCEDC8;
+      --denary: #FFECB3;
+      --dark-bg: #121212;
+      --light-bg: #F5F5F5;
+      --text-light: #F5F5F5;
+      --text-dark: #121212;
+      --glass-bg: rgba(255, 255, 255, 0.1);
+      --glass-border: rgba(255, 255, 255, 0.3);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, var(--dark-bg), #1a1a1a);
+      color: var(--text-light);
+      margin: 0;
+      padding: 40px;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    body.light-mode {
+      background: linear-gradient(135deg, var(--light-bg), #e0e0e0);
+      color: var(--text-dark);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 3.5rem;
+      letter-spacing: 2px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #FFFFFF 0%, #FF9FB5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: #FF9FB5;
+      border-radius: 2px;
+    }
+
+    .toggle-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 100;
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 50%;
+      padding: 12px;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    }
+
+    .toggle-button {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 1.8rem;
+      color: var(--text-light);
+      transition: transform 0.3s;
+    }
+
+    body.light-mode .toggle-button {
+      color: var(--text-dark);
+    }
+
+    .toggle-button:hover {
+      transform: scale(1.2);
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 25px;
+      margin: 0 auto;
+      max-width: 1400px;
+    }
+
+    .grid-item {
+      border-radius: 20px;
+      padding: 25px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(25px);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4), inset 0 0 20px rgba(255,255,255,0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.4s, box-shadow 0.4s, background 0.4s;
+      position: relative;
+      overflow: hidden;
+      animation: floatCard 6s ease-in-out infinite;
+    }
+
+    .grid-item:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 20px 35px rgba(0,0,0,0.6);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    @keyframes floatCard {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .letter {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      font-weight: bold;
+      color:black;
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .sound-button {
+      background-color: var(--secondary);
+      border: none;
+      border-radius: 12px;
+      padding: 12px 20px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: all 0.4s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    .sound-button:hover {
+      background-color: #f4b6c2;
+      transform: scale(1.08);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+  </style>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+
+  <h1>Koashur Khat Letters</h1>
+
+  <div class="toggle-container">
+    <button class="toggle-button" onclick="toggleMode()">
+      <i id="theme-icon" class="ph-bold ph-moon"></i>
+    </button>
+  </div>
+
+  <div class="grid-container">
+    <script>
+      const letters = [
+        {letter: 'A', bg: 'var(--primary), var(--quinary)', ex1: 'Aab', ex2: 'Aakh'},
+        {letter: 'B', bg: 'var(--secondary), var(--tertiary)', ex1: 'Baar', ex2: 'Baas'},
+        {letter: 'C', bg: 'var(--octonary), var(--denary)', ex1: 'Choor', ex2: 'Chet'},
+        {letter: 'D', bg: 'var(--septenary), var(--senary)', ex1: 'Daar', ex2: 'Doon'},
+        {letter: 'E', bg: 'var(--nonary), var(--denary)', ex1: 'Eej', ex2: 'Eekh'},
+        {letter: 'F', bg: 'var(--quaternary), var(--senary)', ex1: 'Far', ex2: 'Faat'},
+        {letter: 'G', bg: 'var(--primary), var(--secondary)', ex1: 'Goor', ex2: 'Gaat'},
+        {letter: 'H', bg: 'var(--senary), var(--quinary)', ex1: 'Haar', ex2: 'Hoon'},
+        {letter: 'I', bg: 'var(--quinary), var(--septenary)', ex1: 'Ish', ex2: 'Iin'},
+        {letter: 'J', bg: 'var(--tertiary), var(--octonary)', ex1: 'Joor', ex2: 'Jaat'},
+        {letter: 'K', bg: 'var(--secondary), var(--nonary)', ex1: 'Kaar', ex2: 'Koon'},
+        {letter: 'L', bg: 'var(--denary), var(--quaternary)', ex1: 'Laar', ex2: 'Laan'},
+        {letter: 'M', bg: 'var(--septenary), var(--primary)', ex1: 'Maar', ex2: 'Moor'},
+        {letter: 'N', bg: 'var(--nonary), var(--tertiary)', ex1: 'Naar', ex2: 'Noon'},
+        {letter: 'O', bg: 'var(--quinary), var(--secondary)', ex1: 'Oor', ex2: 'Oom'},
+        {letter: 'P', bg: 'var(--primary), var(--senary)', ex1: 'Paar', ex2: 'Poon'},
+        {letter: 'Q', bg: 'var(--octonary), var(--quaternary)', ex1: 'Qaar', ex2: 'Qoon'},
+        {letter: 'R', bg: 'var(--quaternary), var(--tertiary)', ex1: 'Raar', ex2: 'Roon'},
+        {letter: 'S', bg: 'var(--nonary), var(--denary)', ex1: 'Saar', ex2: 'Soon'},
+        {letter: 'T', bg: 'var(--senary), var(--primary)', ex1: 'Taar', ex2: 'Toon'},
+      ];
+
+      letters.forEach((l, i) => {
+        document.write(`
+          <div class="grid-item" style="grid-row: span ${i%3===0 ? 2 : 1}; background: linear-gradient(135deg, ${l.bg});">
+            <div class="letter">${l.letter}</div>
+            <div class="button-container">
+              ${l.letter === 'A' ? 
+                `<button class="sound-button" onclick="playVideo('A.mp4')">${l.ex1}</button>
+                 <button class="sound-button" onclick="playVideo('A.mp4')">${l.ex2}</button>` :
+                `<button class="sound-button" onclick="playSound('${l.letter.toLowerCase()}1.mp3')">${l.ex1}</button>
+                 <button class="sound-button" onclick="playSound('${l.letter.toLowerCase()}2.mp3')">${l.ex2}</button>`
+              }
+            </div>
+          </div>
+        `);
+      });
+    </script>
+  </div>
+
+  <script>
+    function playSound(filename) {
+      const audio = new Audio(`sounds/${filename}`);
+      audio.play();
+    }
+
+    function playVideo(filename) {
+      const video = document.createElement('video');
+      video.src = filename;
+      video.play().catch(error => {
+        console.log('Error playing video:', error);
+      });
+    }
+
+    function toggleMode() {
+      const body = document.body;
+      body.classList.toggle('light-mode');
+      const icon = document.getElementById('theme-icon');
+      if (body.classList.contains('light-mode')) {
+        icon.classList.remove('ph-moon');
+        icon.classList.add('ph-sun');
+      } else {
+        icon.classList.remove('ph-sun');
+        icon.classList.add('ph-moon');
+      }
+    }
+  </script>
+
+</body>
+</html>
+

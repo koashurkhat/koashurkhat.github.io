@@ -152,21 +152,15 @@ nav a:hover::after {
 }
 
 #about {
+    padding-top: 180px;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 50px;
-    padding-bottom: 0;
-    padding-left: 5%;
-    padding-right: 5%;
-    min-height: 100vh;
     overflow: hidden;
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
+    padding-top: 60px;
     width: 100%;
     max-width: 1200px;
     display: grid;
@@ -174,7 +168,7 @@ nav a:hover::after {
     gap: 60px;
     align-items: center;
     padding: 0;
-    margin-top: 0; 
+    margin-top: 0;
 }
 
 .hero-titles {
@@ -330,14 +324,11 @@ nav a:hover::after {
     }
 
     #about {
-        padding-top: 40px; 
-        padding-bottom: 0;
-        padding-left: 20px;
-        padding-right: 20px;
-        min-height: 100vh;
+        padding-top: 140px;
     }
 
     .hero-content {
+        padding-top: 40px;
         gap: 25px;
     }
 
@@ -415,7 +406,7 @@ nav a:hover::after {
     }
 
     #about {
-        padding-top: 30px; 
+        padding-top: 120px;
     }
 
     .section {
@@ -900,7 +891,7 @@ nav a:hover::after {
     background-color: #FF8BA7;
 }
 
-/* Adding a subtle pink accent to some elements */
+
 #videos h2, #contact h2 {
     font-size: clamp(28px, 4vw, 42px);
     color: #FFFFFF;
@@ -944,7 +935,7 @@ nav a:hover::after {
     }
 }
 
-/* Fix footer */
+
 footer {
     background: var(--dark);
     padding: 20px;
@@ -953,14 +944,14 @@ footer {
     margin-top: 0;
 }
 
-/* Clean up feature cards hover effect */
+
 .feature-card:hover {
     transform: translateY(-5px);
     background: rgba(20, 20, 20, 0.8);
     border-color: var(--primary);
 }
 
-/* Add subtle styling to buttons and interactive elements */
+
 button, .btn {
     background: var(--primary);
     color: var(--dark);
@@ -974,4 +965,149 @@ button, .btn {
 
 button:hover, .btn:hover {
     background: var(--secondary);
+}
+
+/* Modify the script button to remove underline */
+.script-button {
+    background: var(--primary);
+    color: var(--dark) !important;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 159, 181, 0.3);
+}
+
+.script-button:hover {
+    background: var(--light);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 159, 181, 0.5);
+}
+
+/* Remove the underline from the Learn Letters button */
+nav a.script-button::after {
+    display: none;
+}
+
+/* Improve text alignment in the learning CTA section */
+.learning-cta {
+    background: rgba(10, 10, 10, 0.7);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 159, 181, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+    padding: 40px;
+    margin-top: 120px;
+    margin-bottom: 30px;
+    width: 90%;
+    max-width: 800px;
+    text-align: center;
+    transition: all 0.3s ease;
+    z-index: 5;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.learning-cta h3 {
+    font-size: 28px;
+    margin: 0 0 15px;
+    background: linear-gradient(135deg, var(--light) 0%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: 100%;
+    text-align: center;
+}
+
+.learning-cta p {
+    margin-bottom: 60px;
+    font-size: 16px;
+    max-width: 600px;
+    line-height: 1.6;
+    color: var(--light);
+    text-align: center;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary);
+    color: var(--dark);
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(255, 159, 181, 0.4);
+    border: 2px solid transparent;
+    gap: 10px;
+}
+
+.cta-button:hover {
+    background: var(--light);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 159, 181, 0.6);
+}
+
+.cta-button i {
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover i {
+    transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+    .learning-cta {
+        padding: 30px 20px;
+        margin-top: 80px;
+        width: 90%;
+    }
+
+    .learning-cta h3 {
+        font-size: 24px;
+    }
+
+    .learning-cta p {
+        font-size: 15px;
+        margin-bottom: 50px;
+    }
+    
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .learning-cta {
+        padding: 25px 15px;
+        margin-top: 60px;
+    }
+    
+    .learning-cta h3 {
+        font-size: 22px;
+    }
+
+    .learning-cta p {
+        margin-bottom: 40px;
+    }
+}
+
+/* Restore hover effect for learning CTA */
+.learning-cta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    border-color: var(--primary);
+}
+
+/* Restore mobile styles for script button */
+@media (max-width: 768px) {
+    nav.active .script-button {
+        margin-top: 10px;
+        display: inline-block;
+    }
 }
