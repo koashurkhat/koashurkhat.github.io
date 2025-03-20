@@ -1,6 +1,20 @@
 # Koshur Khat Website
 
-Recent updates and improvements to the Koshur Khat website design and functionality.
+this is the website for koshur khat project. it helps people learn kashmiri language using roman script.
+
+## what's new
+
+- added a new letters page where you can learn all letters
+- each letter has example words that you can click to hear how they sound
+- letter A has a video that plays when you click it
+- made the website look better with pink theme
+- added dark and light mode that you can switch between
+- put in a learn letters button in the top menu
+- added a big section under the main text that takes you to letters page
+- fixed spacing and text alignment throughout the site
+- made everything mobile friendly
+
+
 
 ## Recent Updates
 
@@ -23,11 +37,6 @@ Recent updates and improvements to the Koshur Khat website design and functional
    - Optimized video player dimensions
    - Improved social media integration
    - Consolidated footer and contact sections
-
-## Contact Information
-- Email: koashurkhat@gmail.com
-- Instagram: @koashurkhat
-- YouTube: @KoashurKhat
 
 ## Known Issues
 - Navbar responsiveness on legacy mobile devices
